@@ -1,0 +1,4 @@
+2
+Subject,Failure Rate,Importance,Difficulty,Group
+AEDS III,5,10,8,1A
+Analise Numerica,3,8,7,1A
