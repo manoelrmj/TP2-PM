@@ -44,7 +44,7 @@ public class IO {
 			while(line != null){
 				line = readArq.readLine();
 				// gambs
-				if(line.equals(null))
+				if(line==null)
 					break;
 				System.out.println(line);
 				attributesValues = line.split(",");
