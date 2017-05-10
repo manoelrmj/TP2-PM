@@ -1,3 +1,5 @@
+import java.util.Map;
+
 public class Interface {
 
 	private static void clearConsole(){
@@ -9,7 +11,6 @@ public class Interface {
 		System.out.println("");
 		for(int i=0; i<54;i++)
 			System.out.print(" ");
-		System.out.println("i: adas");
 		System.out.println("SUPER TRUNFO");
 		for(int i=0;i<84;i++){
 			if(i == 0)
@@ -24,7 +25,6 @@ public class Interface {
 			System.out.print("                 |");
 			for(int j=0;j<80;j++){
 				if(j == 5 || j == 52){
-					System.out.println("i: " + i);
 					if(i == 1){
 						if(j == 5)
 							printName(j1.getName());
@@ -148,42 +148,40 @@ public class Interface {
 	}
 		
 	
-	private static void printCard(Carta card, boolean bool, int num){ // card carta
-
-		System.out.print(" AQUIIIIIIIIIIII ");
-		
+	private static void printCard(Carta card, boolean bool, int num){ // card carta		
 		if(bool == false)
 			System.out.print("                       ");
 		else{
 
-			String[] attributes;
-			String[] attributes2;
+			String attributes[] = new String[7];
+			String attributes2[] = new String[7];
 
-			int i = 0;
-			for (Map.Entry<String, String> entry : cardInfo.entrySet()) {
-			    attributes[i] = entry.getKey().toString(); // key
-			    attributes2[i] = Double.parseDouble(entry.getValue()); 
-			    i++;
+			int j = 0;
+			for (Map.Entry<String, String> entry : card.getCard().entrySet()) {
+			    attributes[j] = entry.getKey().toString(); // key
+			    attributes2[j] = entry.getValue(); 
+			    j++;
 			}
-			String id = "A1"; // = carta.getId();
-			String name = "Urso Polar"; // = carta.getName();
+			
+			//String id = "A1"; // = carta.getId();
+			//String name = "Urso Polar"; // = carta.getName();
 			// Tamanho da carta = 23              Altura da carta = 24
 			
-			String[] name_array = name.split(" ");
+			String[] name_array = card.getCard().get("Nome").split(" ");
 
 			switch(num){
 				case 0:
 					System.out.print(" --------------------- ");
 					break;
 				case 1:
-					System.out.print("/          " + id + "         \\");
+					System.out.print("/          " + card.getCard().get("Id") + "         \\");
 					break;
 				case 2:
 					System.out.print("|---------------------|");
 					break;
 			}
 					
-			if(trunfo == 1){ // Se é super trunfo
+			if(card.getCard().get("Trunfo").equals("1")){ // Se é super trunfo
 				switch(num){
 					case 3:
 						System.out.print("|    SUPER TRUNFO     |");
@@ -258,39 +256,39 @@ public class Interface {
 					System.out.print("|                     |");
 					break;
 				case 10:
-					if(taxa < 10)
-						System.out.print("| % de reprovacao:  " + taxa +" |");
-					else if(taxa < 100)
-						System.out.print("| % de reprovacao: " + taxa +" |");
+					if(Integer.parseInt(card.getCard().get("Peso(kg)")) < 10)
+						System.out.print("  Peso(kg): " + card.getCard().get("Peso(kg)") +" |");
+					else if(Integer.parseInt(card.getCard().get("Peso(kg)")) < 100)
+						System.out.print("  Peso(kg): " + card.getCard().get("Peso(kg)") +" |");
 					else
-						System.out.print("| % de reprovacao:" + taxa +" |");
+						System.out.print("  Peso(kg): " + card.getCard().get("Peso(kg)") +" |");
 					break;
 	
 				case 11:
-					if(importancia < 10)
-						System.out.print("| Importancia:      " + importancia + " |");
-					else if (importancia < 100)
-						System.out.print("| Importancia:     " + importancia + " |");
+					if(Integer.parseInt(card.getCard().get("Altura(cm)")) < 10)
+						System.out.print("Altura(cm):   " + card.getCard().get("Altura(cm)") + " |");
+					else if (Integer.parseInt(card.getCard().get("Altura(cm)")) < 100)
+						System.out.print("Altura(cm):   " + card.getCard().get("Altura(cm)") + " |");
 					else
-						System.out.print("| Importancia:    " + importancia + " |");
+						System.out.print("Altura(cm):   " + card.getCard().get("Altura(cm)") + " |");
 					break;
 	
 				case 12:
-					if(dific < 10)
-						System.out.print("| Dificuldade:      " + dific + " |");
-					else if(dific < 100)
-						System.out.print("| Dificuldade:     " + dific + " |");
+					if(Integer.parseInt(card.getCard().get("Idade(anos)"))  < 10)
+						System.out.print("Idade(anos):  " + card.getCard().get("Idade(anos)") + " |");
+					else if(Integer.parseInt(card.getCard().get("Idade(anos)")) < 100)
+						System.out.print("Idade(anos):  " + card.getCard().get("Idade(anos)") + " |");
 					else
-						System.out.print("| Dificuldade:    " + dific + " |");
+						System.out.print("Idade(anos):  " + card.getCard().get("Idade(anos)") + " |");
 					break;
 	
 				case 13:
-					if(terror < 10)
-						System.out.print("| Terror:           " + terror + " |");
-					else if(terror < 100)
-						System.out.print("| Terror:          " + terror + " |");
+					if(Integer.parseInt(card.getCard().get("Num filhotes"))  < 10)
+						System.out.print("Num filhotes:  " + card.getCard().get("Num filhotes") + " |");
+					else if(Integer.parseInt(card.getCard().get("Num filhotes"))  < 100)
+						System.out.print("Num filhotes:  " + card.getCard().get("Num filhotes") + " |");
 					else
-						System.out.print("| Terror:         " + terror + " |");
+						System.out.print("Num filhotes:  " + card.getCard().get("Num filhotes") + " |");
 					break;
 	
 				case 14:
