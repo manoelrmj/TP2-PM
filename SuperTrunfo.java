@@ -58,11 +58,14 @@ public class SuperTrunfo implements Game {
 				Carta auxCardP2 = p2.getCards().showCard();
 				if(Double.parseDouble(auxCardP1.getCard().get(auxAttribute)) > Double.parseDouble(auxCardP2.getCard().get(auxAttribute))){
 					// Jogador 1 ganha
-				}else{
+					turn = 1;
+				}else if(Double.parseDouble(auxCardP1.getCard().get(auxAttribute)) < Double.parseDouble(auxCardP2.getCard().get(auxAttribute))){
 					// Jogador 2 ganha
+					turn = 2;
+				}else{ // empate
+					turn = 2;
 				}
 				//refreshInterface(p1, true, p2, true);
-				turn = 2;
 			}else if(turn == 2){
 				//refreshInterface(p1, true, p2, false);
 				System.out.println("Jogador 2, selecionar atributo: ");
@@ -71,11 +74,14 @@ public class SuperTrunfo implements Game {
 				Carta auxCardP2 = p2.getCards().showCard();
 				if(Double.parseDouble(auxCardP1.getCard().get(auxAttribute)) > Double.parseDouble(auxCardP2.getCard().get(auxAttribute))){
 					// Jogador 1 ganha
-				}else{
+					turn = 1;
+				}else if(Double.parseDouble(auxCardP1.getCard().get(auxAttribute)) < Double.parseDouble(auxCardP2.getCard().get(auxAttribute))){
 					// Jogador 2 ganha
+					turn = 2;
+				}else{ // empate
+					turn = 1;
 				}
 				//refreshInterface(p1, true, p2, true);
-				turn = 1;
 			}
 		}
 		
