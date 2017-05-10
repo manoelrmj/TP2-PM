@@ -1,5 +1,5 @@
 32
-Nome,Id,Peso(kg),Altura(cm),Tempo de vida(anos),Numero de filhotes,Trunfo
+Nome,Id,Peso(kg),Altura(cm),Idade(anos),Num filhotes,Trunfo
 Anta,1A,200,200,35,1,0
 Capivara,2A,80,120,12,8,0
 Camelo,3A,690,300,50,1,0

@@ -1,5 +1,5 @@
 32
-Nome,Id,Velocidade max(km/h),Cilindradas(cc),Potencia(cv),Comprimento(m),Trunfo
+Nome,Id,Vel max(km/h),Cilind(cc),Potencia(cv),Comprimento(m),Trunfo
 1 Litre,1A,120,300,9,3.65,0
 Bora,2A,195,1984,116,4.376,0
 Bora Stockcar,3A,280,5700,450,4.7,0
@@ -17,7 +17,7 @@ Jetta,6B,208,2480,150,4.554,0
 Kombi,7B,130,1390,57,4.505,0
 Nardo,8B,349,5998,600,4.55,0
 New Beetle,1C,185,1984,116,4.129,0
-New Beetle Cabriolet,2C,179,1896,107,4.129,0
+Beetle Cabriolet,2C,179,1896,107,4.129,0
 Parati,3C,190,1781,103,4.189,0
 Passat Turbo,4C,230,1984,200,4.765,0
 Phaeton,5C,250,4921,313,5.055,0
