@@ -43,7 +43,7 @@ public class SuperTrunfo implements Game {
 		p2.getCards().printCards();
 		System.out.println("-------------------------------");
 		
-		System.exit(0);
+		//System.exit(0);
 		
 		// --------------- FUNCAO DE EXECUTAR JOGADA
 		
@@ -51,7 +51,7 @@ public class SuperTrunfo implements Game {
 		String auxAttribute = "";
 		while(p1.getCards().getPackLength() != 0 || p2.getCards().getPackLength() != 0){
 			if(turn == 1){
-				//refreshInterface(p1, true, p2, false);
+				Interface.refreshInterface(p1, true, p2, false, pack);
 				System.out.println("Jogador 1, selecionar atributo: ");
 				auxAttribute = reader.next();
 				Carta auxCardP1 = p1.getCards().showCard();

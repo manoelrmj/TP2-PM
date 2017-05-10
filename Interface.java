@@ -5,7 +5,7 @@ public class Interface {
 		System.out.flush();
 	}
 
-	private static void printBoard(){
+	private static void printBoard(Jogador j1, boolean b1, Jogador j2, boolean b2, Pack monte){
 		System.out.println("");
 		for(int i=0; i<54;i++)
 			System.out.print(" ");
@@ -23,26 +23,37 @@ public class Interface {
 			System.out.print("                 |");
 			for(int j=0;j<80;j++){
 				if(j == 5 || j == 52){
-					if(i == 1)
+					if(i == 1){
 						if(j == 5)
-							printName("Danilo");
+							printName(j1.getName());
 						else if(j == 52)
-							printName("Manoel");
+							printName(j2.getName());
 						else
 							System.out.print("                       ");
-					else if(i >1 && i <18)
-						// ij j == 5, printa a carta do jogador 1, se j == 52, carta do jogador 2
-						printCard("non", i-2); // Tem 2 parametros, serão 3, o 3o será o objeto. o 1o se for = none, não printa cartas
-					else if(i>19 && i <25)
-						// ij j == 5, printa o deck do jogador 1, se j == 52, deck do jogador 2
-						printPack("aa", i-20);
+					}
+					else if(i >1 && i <18){
+						if(j == 5)
+							printCard(j1.getCards().showCard(), false, i-2);
+						else if(j == 52)
+							printCard(j2.getCards().showCard(), false, i-2);
+						else
+							System.out.print("                       ");
+					}
+					else if(i>19 && i <25){
+						if(j == 5)
+							printPack(j1.getCards(), i-20); // Jogador 1
+						else if(j == 52)
+							printPack(j2.getCards(),i-20); // Jogador 2
+						else
+							System.out.print("                       ");
+					}
 					else
 						System.out.print("                       ");
 				}
 				else if(j > 29 && j < 47){
 					if(j == 30){
 						if(i > 17 && i < 21){
-							printStack(i-18);
+							printStack(monte, i-18);
 						}
 						else
 							System.out.print("                  ");
@@ -83,8 +94,8 @@ public class Interface {
 	}
 	
 	
-	private static void printStack(int num){
-		int stack = 10;
+	private static void printStack(Pack deck, int num){
+		int stack = deck.getPackLength();
 		
 		switch(num){
 			case 0:
@@ -106,8 +117,8 @@ public class Interface {
 	}
 	
 	
-	private static void printPack(String jogador, int num){ // Pack deck
-		int num_cards = 10; // deck.queue.size() (? kkk)
+	private static void printPack(Pack deck, int num){ // Pack deck
+		int num_cards = deck.getPackLength();
 		
 		switch(num){
 			case 0:
@@ -134,21 +145,32 @@ public class Interface {
 	}
 		
 	
-	private static void printCard(String card, int num){ // card carta
-		String id = "A1"; // = carta.getId();
-		String name = "Urso Polar"; // = carta.getName();
-		int taxa = 20;
-		int importancia = 10;
-		int dific = 50;
-		int terror = 10;
-		int trunfo = 0;
-		// Tamanho da carta = 23              Altura da carta = 24
+	private static void printCard(Carta card, boolean bool, int num){ // card carta
 		
-		String[] name_array = name.split(" ");
-		
-		if(card == "none")
+		if(bool == false)
 			System.out.print("                       ");
 		else{
+
+			/*String[] attributes;
+			double[] attributes2;
+
+			int i = 0;
+			for (Map.Entry<String, String> entry : cardInfo.entrySet()) {
+			    attributes[i] = entry.getKey().toString(); // key
+			    attributes2[i] = Double.parseDouble(entry.getValue()); 
+			    i++;
+			}
+			String id = "A1"; // = carta.getId();
+			String name = "Urso Polar"; // = carta.getName();
+			int taxa = 20;
+			int importancia = 10;
+			int dific = 50;
+			int terror = 10;
+			int trunfo = 0;
+			// Tamanho da carta = 23              Altura da carta = 24
+			
+			String[] name_array = name.split(" ");
+
 			switch(num){
 				case 0:
 					System.out.print(" --------------------- ");
@@ -277,16 +299,12 @@ public class Interface {
 				case 15:
 					System.out.print(" --------------------- ");
 					break;
-			}
+			}*/
 		}
 	}
 	
-	public static void refreshInterface(){ // Atualiza a interface
+	public static void refreshInterface(Jogador j1, boolean b1, Jogador j2, boolean b2, Pack monte){ // Atualiza a interface
 		clearConsole();
-		printBoard();
-	}
-	
-	public static void main(String[] args){
-		refreshInterface();
+		printBoard(j1, b1, j2, b2, monte);
 	}
 }
