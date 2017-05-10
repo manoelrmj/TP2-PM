@@ -9,6 +9,7 @@ public class Interface {
 		System.out.println("");
 		for(int i=0; i<54;i++)
 			System.out.print(" ");
+		System.out.println("i: adas");
 		System.out.println("SUPER TRUNFO");
 		for(int i=0;i<84;i++){
 			if(i == 0)
@@ -23,6 +24,7 @@ public class Interface {
 			System.out.print("                 |");
 			for(int j=0;j<80;j++){
 				if(j == 5 || j == 52){
+					System.out.println("i: " + i);
 					if(i == 1){
 						if(j == 5)
 							printName(j1.getName());
@@ -32,10 +34,11 @@ public class Interface {
 							System.out.print("                       ");
 					}
 					else if(i >1 && i <18){
+
 						if(j == 5)
-							printCard(j1.getCards().showCard(), false, i-2);
+							printCard(j1.getCards().showCard(), b1, i-2);
 						else if(j == 52)
-							printCard(j2.getCards().showCard(), false, i-2);
+							printCard(j2.getCards().showCard(), b2, i-2);
 						else
 							System.out.print("                       ");
 					}
@@ -146,13 +149,15 @@ public class Interface {
 		
 	
 	private static void printCard(Carta card, boolean bool, int num){ // card carta
+
+		System.out.print(" AQUIIIIIIIIIIII ");
 		
 		if(bool == false)
 			System.out.print("                       ");
 		else{
 
-			/*String[] attributes;
-			double[] attributes2;
+			String[] attributes;
+			String[] attributes2;
 
 			int i = 0;
 			for (Map.Entry<String, String> entry : cardInfo.entrySet()) {
@@ -162,11 +167,6 @@ public class Interface {
 			}
 			String id = "A1"; // = carta.getId();
 			String name = "Urso Polar"; // = carta.getName();
-			int taxa = 20;
-			int importancia = 10;
-			int dific = 50;
-			int terror = 10;
-			int trunfo = 0;
 			// Tamanho da carta = 23              Altura da carta = 24
 			
 			String[] name_array = name.split(" ");
@@ -299,7 +299,7 @@ public class Interface {
 				case 15:
 					System.out.print(" --------------------- ");
 					break;
-			}*/
+			}
 		}
 	}
 	

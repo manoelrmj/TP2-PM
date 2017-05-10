@@ -50,11 +50,19 @@ public class SuperTrunfo implements Game {
 				Interface.refreshInterface(p1, true, p2, true, pack);
 				if(Double.parseDouble(auxCardP1.getCard().get(auxAttribute)) > Double.parseDouble(auxCardP2.getCard().get(auxAttribute))){
 					// Jogador 1 ganha
+					System.out.println("P1 venceu");
+					p1.addCard(p1.getCards().getCard());
+					p1.addCard(p2.getCards().getCard());
 					turn = 1;
 				}else if(Double.parseDouble(auxCardP1.getCard().get(auxAttribute)) < Double.parseDouble(auxCardP2.getCard().get(auxAttribute))){
+					
+					System.out.println("P2 venceu");
+					p2.addCard(p1.getCards().getCard());
+					p2.addCard(p2.getCards().getCard());
 					// Jogador 2 ganha
 					turn = 2;
 				}else{ // empate
+					System.out.println("Empate");
 					turn = 2;
 				}
 			}else if(turn == 2){
@@ -66,11 +74,19 @@ public class SuperTrunfo implements Game {
 				Interface.refreshInterface(p1, true, p2, true, pack);
 				if(Double.parseDouble(auxCardP1.getCard().get(auxAttribute)) > Double.parseDouble(auxCardP2.getCard().get(auxAttribute))){
 					// Jogador 1 ganha
+					System.out.println("P1 venceu");
+					p1.addCard(p1.getCards().getCard());
+					p1.addCard(p2.getCards().getCard());
 					turn = 1;
 				}else if(Double.parseDouble(auxCardP1.getCard().get(auxAttribute)) < Double.parseDouble(auxCardP2.getCard().get(auxAttribute))){
 					// Jogador 2 ganha
+
+					System.out.println("P2 venceu");
+					p2.addCard(p1.getCards().getCard());
+					p2.addCard(p2.getCards().getCard());
 					turn = 2;
 				}else{ // empate
+					System.out.println("Empate");
 					turn = 1;
 				}
 			}
