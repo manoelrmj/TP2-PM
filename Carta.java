@@ -13,7 +13,11 @@ public class Carta {
 		this.cardInfo.put(attribute, value);
 	}
 	
-	public void printCarta(){
+	public Map<String, String> getCard(){
+		return cardInfo;
+	}
+	
+	public void printCard(){
 		for (Map.Entry<String, String> entry : cardInfo.entrySet()) {
 		    String key = entry.getKey().toString();
 		    String value = entry.getValue();

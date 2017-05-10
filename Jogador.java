@@ -1,23 +1,32 @@
-import java.util.ArrayList;
-
 public class Jogador {
 
 	private int id;
 	private String name;
-	private ArrayList<Carta> cards;
+	//private LinkedList<Carta> cards;
+	private Pack playerPack = new Pack();
 
+	public Jogador(){
+		
+	}
+	
+	public Jogador(int id, String name){
+		this.name = name;
+		this.id = id;
+		//this.playerPack = new Pack();
+	}
+	
 	/**
 	 * @return the cards
 	 */
-	public ArrayList<Carta> getCards() {
-		return cards;
+	public Pack getCards() {
+		return playerPack;
 	}
 
 	/**
 	 * @param cards the cards to set
 	 */
-	public void setCards(ArrayList<Carta> cards) {
-		this.cards = cards;
+	public void setCards(Pack cards) {
+		this.playerPack = cards;
 	}
 
 	/**
@@ -46,6 +55,14 @@ public class Jogador {
 	 */
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public void addCard(Carta card){
+		playerPack.addCard(card);
+	}
+	
+	public Carta getCard(){
+		return this.playerPack.getCard();
 	}
 
 }

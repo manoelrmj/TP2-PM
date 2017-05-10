@@ -1,16 +1,22 @@
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Map;
 
 public class Pack {
 	
-	private ArrayList<Carta> cards = new ArrayList<Carta>();
+	private LinkedList<Carta> cards = new LinkedList<Carta>();
 	
 	public Pack() {
 		// TODO Auto-generated constructor stub
 	}
 	
 	public void addCard(Carta card){
-		cards.add(card);
+		//card.printCard();
+		cards.addLast(card);
+	}
+	
+	public Carta getCard(){
+		Carta auxCard = cards.poll();
+		return auxCard;
 	}
 	
 	public int getPackLength(){
@@ -20,7 +26,12 @@ public class Pack {
 	public void printCards(){
 		for(int i=0; i<cards.size(); i++){
 			Carta auxCard = cards.get(i);
-			auxCard.printCarta();
+			for (Map.Entry<String, String> entry : auxCard.getCard().entrySet()) {
+			    String key = entry.getKey().toString();
+			    String value = entry.getValue();
+			    System.out.print(key + ":" + value + " | ");
+			}
+			System.out.println();
 		}
 	}
 }

@@ -46,7 +46,7 @@ public class IO {
 				// gambs
 				if(line==null)
 					break;
-				System.out.println(line);
+				//System.out.println(line);
 				attributesValues = line.split(",");
 				Carta auxCard = new Carta();
 				for(int i=0; i<attributesName.length; i++)
