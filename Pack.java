@@ -19,6 +19,11 @@ public class Pack {
 		return auxCard;
 	}
 	
+	public Carta showCard(){
+		Carta auxCard = cards.getFirst();
+		return auxCard;
+	}
+	
 	public int getPackLength(){
 		return cards.size();
 	}

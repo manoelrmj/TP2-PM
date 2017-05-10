@@ -42,6 +42,48 @@ public class SuperTrunfo implements Game {
 		System.out.println("Cartas do jogador 2:");
 		p2.getCards().printCards();
 		System.out.println("-------------------------------");
+		
+		System.exit(0);
+		
+		// --------------- FUNCAO DE EXECUTAR JOGADA
+		
+		int turn = 1;
+		String auxAttribute = "";
+		while(p1.getCards().getPackLength() != 0 || p2.getCards().getPackLength() != 0){
+			if(turn == 1){
+				//refreshInterface(p1, true, p2, false);
+				System.out.println("Jogador 1, selecionar atributo: ");
+				auxAttribute = reader.next();
+				Carta auxCardP1 = p1.getCards().showCard();
+				Carta auxCardP2 = p2.getCards().showCard();
+				if(Double.parseDouble(auxCardP1.getCard().get(auxAttribute)) > Double.parseDouble(auxCardP2.getCard().get(auxAttribute))){
+					// Jogador 1 ganha
+				}else{
+					// Jogador 2 ganha
+				}
+				//refreshInterface(p1, true, p2, true);
+				turn = 2;
+			}else if(turn == 2){
+				//refreshInterface(p1, true, p2, false);
+				System.out.println("Jogador 2, selecionar atributo: ");
+				auxAttribute = reader.next();
+				Carta auxCardP1 = p1.getCards().showCard();
+				Carta auxCardP2 = p2.getCards().showCard();
+				if(Double.parseDouble(auxCardP1.getCard().get(auxAttribute)) > Double.parseDouble(auxCardP2.getCard().get(auxAttribute))){
+					// Jogador 1 ganha
+				}else{
+					// Jogador 2 ganha
+				}
+				//refreshInterface(p1, true, p2, true);
+				turn = 1;
+			}
+		}
+		
+		if(p1.getCards().getPackLength() != 0)
+			System.out.println(p1.getName() + " venceu!");
+		
+		if(p2.getCards().getPackLength() != 0)
+			System.out.println(p2.getName() + " venceu!");
 	}
 
 	@Override

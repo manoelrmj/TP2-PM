@@ -285,4 +285,8 @@ public class Interface {
 		clearConsole();
 		printBoard();
 	}
+	
+	public static void main(String[] args){
+		refreshInterface();
+	}
 }
