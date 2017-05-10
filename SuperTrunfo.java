@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -47,18 +48,30 @@ public class SuperTrunfo implements Game {
 				auxAttribute = reader.next();
 				Carta auxCardP1 = p1.getCards().showCard();
 				Carta auxCardP2 = p2.getCards().showCard();
-				Interface.refreshInterface(p1, true, p2, true, pack);
 				if(Double.parseDouble(auxCardP1.getCard().get(auxAttribute)) > Double.parseDouble(auxCardP2.getCard().get(auxAttribute))){
 					// Jogador 1 ganha
-					System.out.println("P1 venceu");
+					Interface.refreshInterface(p1, true, p2, true, pack);
 					p1.addCard(p1.getCards().getCard());
 					p1.addCard(p2.getCards().getCard());
+					System.out.println("P1 venceu a rodada! Pressione enter para continuar");
+					try {
+						System.in.read();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					turn = 1;
 				}else if(Double.parseDouble(auxCardP1.getCard().get(auxAttribute)) < Double.parseDouble(auxCardP2.getCard().get(auxAttribute))){
-					
-					System.out.println("P2 venceu");
+					Interface.refreshInterface(p1, true, p2, true, pack);
 					p2.addCard(p1.getCards().getCard());
 					p2.addCard(p2.getCards().getCard());
+					System.out.println("P2 venceu a rodada! Pressione enter para continuar");
+					try {
+						System.in.read();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					// Jogador 2 ganha
 					turn = 2;
 				}else{ // empate
@@ -71,19 +84,34 @@ public class SuperTrunfo implements Game {
 				auxAttribute = reader.next();
 				Carta auxCardP1 = p1.getCards().showCard();
 				Carta auxCardP2 = p2.getCards().showCard();
-				Interface.refreshInterface(p1, true, p2, true, pack);
+				//Interface.refreshInterface(p1, true, p2, true, pack);
 				if(Double.parseDouble(auxCardP1.getCard().get(auxAttribute)) > Double.parseDouble(auxCardP2.getCard().get(auxAttribute))){
 					// Jogador 1 ganha
-					System.out.println("P1 venceu");
+					Interface.refreshInterface(p1, true, p2, true, pack);
 					p1.addCard(p1.getCards().getCard());
 					p1.addCard(p2.getCards().getCard());
+					System.out.println("P1 venceu a rodada! Pressione enter para continuar");
+					try {
+						System.in.read();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
 					turn = 1;
 				}else if(Double.parseDouble(auxCardP1.getCard().get(auxAttribute)) < Double.parseDouble(auxCardP2.getCard().get(auxAttribute))){
 					// Jogador 2 ganha
-
-					System.out.println("P2 venceu");
+					Interface.refreshInterface(p1, true, p2, true, pack);
 					p2.addCard(p1.getCards().getCard());
 					p2.addCard(p2.getCards().getCard());
+					System.out.println("P2 venceu a rodada! Pressione enter para continuar");
+					try {
+						System.in.read();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
 					turn = 2;
 				}else{ // empate
 					System.out.println("Empate");

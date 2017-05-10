@@ -257,38 +257,40 @@ public class Interface {
 					break;
 				case 10:
 					if(Integer.parseInt(card.getCard().get("Peso(kg)")) < 10)
-						System.out.print("  Peso(kg): " + card.getCard().get("Peso(kg)") +" |");
+						System.out.print("| Peso(kg):         " + card.getCard().get("Peso(kg)") +" |");
 					else if(Integer.parseInt(card.getCard().get("Peso(kg)")) < 100)
-						System.out.print("  Peso(kg): " + card.getCard().get("Peso(kg)") +" |");
+						System.out.print("| Peso(kg):        " + card.getCard().get("Peso(kg)") +" |");
+					else if(Integer.parseInt(card.getCard().get("Peso(kg)")) < 1000)
+						System.out.print("| Peso(kg):       " + card.getCard().get("Peso(kg)") +" |");
 					else
-						System.out.print("  Peso(kg): " + card.getCard().get("Peso(kg)") +" |");
+						System.out.print("| Peso(kg):      " + card.getCard().get("Peso(kg)") +" |");
 					break;
 	
 				case 11:
 					if(Integer.parseInt(card.getCard().get("Altura(cm)")) < 10)
-						System.out.print("Altura(cm):   " + card.getCard().get("Altura(cm)") + " |");
+						System.out.print("| Altura(cm):     " + card.getCard().get("Altura(cm)") + " |");
 					else if (Integer.parseInt(card.getCard().get("Altura(cm)")) < 100)
-						System.out.print("Altura(cm):   " + card.getCard().get("Altura(cm)") + " |");
+						System.out.print("| Altura(cm):     " + card.getCard().get("Altura(cm)") + " |");
 					else
-						System.out.print("Altura(cm):   " + card.getCard().get("Altura(cm)") + " |");
+						System.out.print("| Altura(cm):     " + card.getCard().get("Altura(cm)") + " |");
 					break;
 	
 				case 12:
 					if(Integer.parseInt(card.getCard().get("Idade(anos)"))  < 10)
-						System.out.print("Idade(anos):  " + card.getCard().get("Idade(anos)") + " |");
+						System.out.print("| Idade(anos):     " + card.getCard().get("Idade(anos)") + " |");
 					else if(Integer.parseInt(card.getCard().get("Idade(anos)")) < 100)
-						System.out.print("Idade(anos):  " + card.getCard().get("Idade(anos)") + " |");
+						System.out.print("| Idade(anos):     " + card.getCard().get("Idade(anos)") + " |");
 					else
-						System.out.print("Idade(anos):  " + card.getCard().get("Idade(anos)") + " |");
+						System.out.print("| Idade(anos):     " + card.getCard().get("Idade(anos)") + " |");
 					break;
 	
 				case 13:
 					if(Integer.parseInt(card.getCard().get("Num filhotes"))  < 10)
-						System.out.print("Num filhotes:  " + card.getCard().get("Num filhotes") + " |");
+						System.out.print("| Num filhotes:     " + card.getCard().get("Num filhotes") + " |");
 					else if(Integer.parseInt(card.getCard().get("Num filhotes"))  < 100)
-						System.out.print("Num filhotes:  " + card.getCard().get("Num filhotes") + " |");
+						System.out.print("| Num filhotes:     " + card.getCard().get("Num filhotes") + " |");
 					else
-						System.out.print("Num filhotes:  " + card.getCard().get("Num filhotes") + " |");
+						System.out.print("| Num filhotes:     " + card.getCard().get("Num filhotes") + " |");
 					break;
 	
 				case 14:
