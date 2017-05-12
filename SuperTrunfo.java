@@ -44,7 +44,7 @@ public class SuperTrunfo implements Game {
 		while(p1.getCards().getPackLength() != 0 || p2.getCards().getPackLength() != 0){
 			if(turn == 1){
 				Interface.refreshInterface(p1, true, p2, false, pack);
-				System.out.println("Jogador 1, selecionar atributo: ");
+				System.out.println(p1.getName() + ", selecione um atributo: ");
 				auxAttribute = reader.next();
 				Carta auxCardP1 = p1.getCards().showCard();
 				Carta auxCardP2 = p2.getCards().showCard();
@@ -95,7 +95,7 @@ public class SuperTrunfo implements Game {
 				}
 			}else if(turn == 2){
 				Interface.refreshInterface(p1, false, p2, true, pack);
-				System.out.println("Jogador 2, selecionar atributo: ");
+				System.out.println(p2.getName() + ", selecione um atributo: ");
 				auxAttribute = reader.next();
 				Carta auxCardP1 = p1.getCards().showCard();
 				Carta auxCardP2 = p2.getCards().showCard();
