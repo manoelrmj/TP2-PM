@@ -51,9 +51,12 @@ public class SuperTrunfo implements Game {
 				if(Double.parseDouble(auxCardP1.getCard().get(auxAttribute)) > Double.parseDouble(auxCardP2.getCard().get(auxAttribute))){
 					// Jogador 1 ganha
 					Interface.refreshInterface(p1, true, p2, true, pack);
-					p1.addCard(p1.getCards().getCard());
-					p1.addCard(p2.getCards().getCard());
-					System.out.println("P1 venceu a rodada! Pressione enter para continuar");
+					pack.addCard(p1.getCards().getCard());
+					pack.addCard(p2.getCards().getCard());
+					while(pack.getPackLength() != 0){
+						p1.addCard(pack.getCard());
+					}
+					System.out.println(p1.getName() + " venceu a rodada! Pressione enter para continuar");
 					try {
 						System.in.read();
 					} catch (IOException e) {
@@ -63,9 +66,12 @@ public class SuperTrunfo implements Game {
 					turn = 1;
 				}else if(Double.parseDouble(auxCardP1.getCard().get(auxAttribute)) < Double.parseDouble(auxCardP2.getCard().get(auxAttribute))){
 					Interface.refreshInterface(p1, true, p2, true, pack);
-					p2.addCard(p1.getCards().getCard());
-					p2.addCard(p2.getCards().getCard());
-					System.out.println("P2 venceu a rodada! Pressione enter para continuar");
+					pack.addCard(p1.getCards().getCard());
+					pack.addCard(p2.getCards().getCard());
+					while(pack.getPackLength() != 0){
+						p2.addCard(pack.getCard());
+					}
+					System.out.println(p2.getName() + " venceu a rodada! Pressione enter para continuar");
 					try {
 						System.in.read();
 					} catch (IOException e) {
@@ -75,7 +81,16 @@ public class SuperTrunfo implements Game {
 					// Jogador 2 ganha
 					turn = 2;
 				}else{ // empate
-					System.out.println("Empate");
+					Interface.refreshInterface(p1, true, p2, true, pack);
+					pack.addCard(p1.getCards().getCard());
+					pack.addCard(p2.getCards().getCard());
+					System.out.println("Empate! Pressione enter para continuar");
+					try {
+						System.in.read();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					turn = 2;
 				}
 			}else if(turn == 2){
@@ -88,9 +103,12 @@ public class SuperTrunfo implements Game {
 				if(Double.parseDouble(auxCardP1.getCard().get(auxAttribute)) > Double.parseDouble(auxCardP2.getCard().get(auxAttribute))){
 					// Jogador 1 ganha
 					Interface.refreshInterface(p1, true, p2, true, pack);
-					p1.addCard(p1.getCards().getCard());
-					p1.addCard(p2.getCards().getCard());
-					System.out.println("P1 venceu a rodada! Pressione enter para continuar");
+					pack.addCard(p1.getCards().getCard());
+					pack.addCard(p2.getCards().getCard());
+					while(pack.getPackLength() != 0){
+						p1.addCard(pack.getCard());
+					}
+					System.out.println(p1.getName() + " venceu a rodada! Pressione enter para continuar");
 					try {
 						System.in.read();
 					} catch (IOException e) {
@@ -102,9 +120,12 @@ public class SuperTrunfo implements Game {
 				}else if(Double.parseDouble(auxCardP1.getCard().get(auxAttribute)) < Double.parseDouble(auxCardP2.getCard().get(auxAttribute))){
 					// Jogador 2 ganha
 					Interface.refreshInterface(p1, true, p2, true, pack);
-					p2.addCard(p1.getCards().getCard());
-					p2.addCard(p2.getCards().getCard());
-					System.out.println("P2 venceu a rodada! Pressione enter para continuar");
+					pack.addCard(p1.getCards().getCard());
+					pack.addCard(p2.getCards().getCard());
+					while(pack.getPackLength() != 0){
+						p2.addCard(pack.getCard());
+					}
+					System.out.println(p2.getName() + " venceu a rodada! Pressione enter para continuar");
 					try {
 						System.in.read();
 					} catch (IOException e) {
@@ -114,7 +135,16 @@ public class SuperTrunfo implements Game {
 					
 					turn = 2;
 				}else{ // empate
-					System.out.println("Empate");
+					Interface.refreshInterface(p1, true, p2, true, pack);
+					pack.addCard(p1.getCards().getCard());
+					pack.addCard(p2.getCards().getCard());
+					System.out.println("Empate! Pressione enter para continuar");
+					try {
+						System.in.read();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					turn = 1;
 				}
 			}
