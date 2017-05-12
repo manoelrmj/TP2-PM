@@ -1,5 +1,7 @@
 import java.util.LinkedList;
 import java.util.Map;
+import java.util.Collections;
+import java.util.Random;
 
 public class Pack {
 	
@@ -26,6 +28,15 @@ public class Pack {
 	
 	public int getPackLength(){
 		return cards.size();
+	}
+
+	public LinkedList<Carta> getCards(){
+		return cards;
+	}
+
+	public void shuffle(){
+		Random random = new Random(55);
+		Collections.shuffle(cards, random);		
 	}
 	
 	public void printCards(){

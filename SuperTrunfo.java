@@ -41,6 +41,7 @@ public class SuperTrunfo implements Game {
 		
 		int turn = 1;
 		String auxAttribute = "";
+		pack.shuffle();
 		while(p1.getCards().getPackLength() != 0 || p2.getCards().getPackLength() != 0){
 			if(turn == 1){
 				Interface.refreshInterface(p1, true, p2, false, pack);
@@ -53,6 +54,7 @@ public class SuperTrunfo implements Game {
 					Interface.refreshInterface(p1, true, p2, true, pack);
 					pack.addCard(p1.getCards().getCard());
 					pack.addCard(p2.getCards().getCard());
+					pack.shuffle();
 					while(pack.getPackLength() != 0){
 						p1.addCard(pack.getCard());
 					}
@@ -68,6 +70,7 @@ public class SuperTrunfo implements Game {
 					Interface.refreshInterface(p1, true, p2, true, pack);
 					pack.addCard(p1.getCards().getCard());
 					pack.addCard(p2.getCards().getCard());
+					pack.shuffle();
 					while(pack.getPackLength() != 0){
 						p2.addCard(pack.getCard());
 					}
@@ -105,6 +108,7 @@ public class SuperTrunfo implements Game {
 					Interface.refreshInterface(p1, true, p2, true, pack);
 					pack.addCard(p1.getCards().getCard());
 					pack.addCard(p2.getCards().getCard());
+					pack.shuffle();
 					while(pack.getPackLength() != 0){
 						p1.addCard(pack.getCard());
 					}
@@ -122,6 +126,7 @@ public class SuperTrunfo implements Game {
 					Interface.refreshInterface(p1, true, p2, true, pack);
 					pack.addCard(p1.getCards().getCard());
 					pack.addCard(p2.getCards().getCard());
+					pack.shuffle();
 					while(pack.getPackLength() != 0){
 						p2.addCard(pack.getCard());
 					}
