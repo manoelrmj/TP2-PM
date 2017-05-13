@@ -30,20 +30,34 @@ public class SuperTrunfo implements Game {
 		Scanner reader = new Scanner(System.in);
 		clearConsole();
 		System.out.println(":: :: SUPER TRUNFO :: ::\n");
-		//System.out.println("1 - Single-player");
-		//System.out.println("2 - Multiplayer");
-		//System.out.println("Selecione o numero do modo: ");
+		double biggestNumbers[] = new double[4];
+		biggestNumbers = pack.biggestNumbers();
 
-		//String mode = reader.next();
+		System.out.println("1: 1 Jogador");
+		System.out.println("2: 2 Jogadores\n");
+		System.out.println("Selecione o numero do modo: ");
+
+		String mode = reader.next();
 		
-		System.out.println("Insira o nome do jogador 1: ");
+		if(mode.equals("1")){
+			System.out.println("Insira o seu nome: ");
+		}
+		else
+			System.out.println("Insira o nome do jogador 1: ");
+
 		p1 = new Jogador();
 		p1.setName(reader.next());
 		p1.setId(1);
 		
-		System.out.println("Insira o nome do jogador 2: ");
 		p2 = new Jogador();
-		p2.setName(reader.next());
+
+		if(mode.equals("2")){
+			System.out.println("Insira o nome do jogador 2: ");
+			p2.setName(reader.next());
+		}
+		else{
+			p2.setName("Bot");
+		}
 		p2.setId(2);
 		
 		splitPack();
@@ -128,8 +142,21 @@ public class SuperTrunfo implements Game {
 				}
 			}else if(turn == 2){
 				Interface.refreshInterface(p1, false, p2, true, pack);
-				System.out.println(p2.getName() + ", selecione um atributo: ");
-				auxAttribute = reader.next();
+				if(mode.equals("2")){
+					System.out.println(p2.getName() + ", selecione um atributo: ");
+					auxAttribute = reader.next();
+				}
+				else{
+					System.out.println(p2.getName() + " esta selecionando um atributo.");
+					auxAttribute = p2.getCards().botChoise(biggestNumbers, p2.getCards().showCard());
+					System.out.println(p2.getName() + " selecionou o atributo " + auxAttribute + ". Pressione enter para continuar");
+					try {
+						System.in.read();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
 				Carta auxCardP1 = p1.getCards().showCard();
 				Carta auxCardP2 = p2.getCards().showCard();
 				Interface.refreshInterface(p1, true, p2, true, pack);

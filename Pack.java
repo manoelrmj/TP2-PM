@@ -6,6 +6,7 @@ import java.util.Random;
 public class Pack {
 	
 	private LinkedList<Carta> cards = new LinkedList<Carta>();
+	private double array[] = new double[4];
 	
 	public Pack() {
 		// TODO Auto-generated constructor stub
@@ -50,4 +51,60 @@ public class Pack {
 			System.out.println();
 		}
 	}
+
+	public double[] biggestNumbers(){
+		for(int i=0; i<4; i++){
+			array[i] = 0;
+		}	
+		for(int i=0; i<cards.size(); i++){
+			int j = 0;
+			Carta auxCard = cards.get(i);
+			for (Map.Entry<String, String> entry : auxCard.getCard().entrySet()) {
+				if(j != 6){
+				    String key = entry.getKey().toString();
+				    String value = entry.getValue();
+
+				    if(!key.equals("Id") && !key.equals("Nome") && !key.equals("Trunfo")){
+					    if(Double.parseDouble(value) > array[j])
+					    	array[j] = Double.parseDouble(value);
+					}
+					else
+						j--;
+				}
+				else
+					j--;
+				j++;
+			}
+		}
+		return array;
+	}
+
+
+	public String botChoise(double[] array, Carta card){
+		int j = 0;
+		int i = 0;
+		double porcent = 0;
+		String best = "";
+		for (Map.Entry<String, String> entry : card.getCard().entrySet()) {
+			if(j != 6){
+			    String key = entry.getKey().toString();
+			    String value = entry.getValue();
+			    if(!key.equals("Id") && !key.equals("Nome") && !key.equals("Trunfo")){
+
+					if(Double.parseDouble(value)/array[i] > porcent){
+						porcent = Double.parseDouble(value)/array[i];
+						best = key;
+					}
+				    i++;
+				}
+				else
+					j--;
+			}
+			else
+				j--;
+			j++;
+		}
+		return best;
+	}
+
 }
