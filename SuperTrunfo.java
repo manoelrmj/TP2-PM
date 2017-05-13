@@ -65,18 +65,23 @@ public class SuperTrunfo implements Game {
 		// --------------- FUNCAO DE EXECUTAR JOGADA
 		
 		int turn = 1;
-		String auxAttribute = "";
+		//String auxAttribute = "";
+		int selected_attribute = 0;
 		pack.shuffle();
-		while(p1.getCards().getPackLength() != 0 && p2.getCards().getPackLength() != 0){
+		while(p1.getPack().getPackLength() != 0 && p2.getPack().getPackLength() != 0){
 			if(turn == 1){
 				Interface.refreshInterface(p1, true, p2, false, pack);
 				System.out.println(p1.getName() + ", selecione um atributo: ");
-				auxAttribute = reader.next();
-				Carta auxCardP1 = p1.getCards().showCard();
-				Carta auxCardP2 = p2.getCards().showCard();
+				selected_attribute = reader.nextInt() +2;
+				Carta auxCardP1 = p1.getPack().showCard();
+				double valueCardP1 = Double.parseDouble((new ArrayList<String>(auxCardP1.getCard().values())).get(selected_attribute));
+				Carta auxCardP2 = p2.getPack().showCard();
+				double valueCardP2 = Double.parseDouble((new ArrayList<String>(auxCardP2.getCard().values())).get(selected_attribute));
+				System.out.println("SELECTED P1: " + valueCardP1 + " | SELECTED P2: " + valueCardP2);
+				System.exit(0);
 				Interface.refreshInterface(p1, true, p2, true, pack);
-				pack.addCard(p1.getCards().getCard());
-				pack.addCard(p2.getCards().getCard());
+				pack.addCard(p1.getPack().getCard());
+				pack.addCard(p2.getPack().getCard());
 				pack.shuffle();
 				if(auxCardP1.getCard().get("Trunfo").equals("1")){
 					char type = auxCardP2.getCard().get("Id").charAt(1);
@@ -96,8 +101,7 @@ public class SuperTrunfo implements Game {
 						System.out.println(p1.getName() + " venceu a rodada! Pressione enter para continuar");
 						turn = 1;
 					}
-				}
-				else if(auxCardP2.getCard().get("Trunfo").equals("1")){
+				}else if(auxCardP2.getCard().get("Trunfo").equals("1")){
 					char type = auxCardP1.getCard().get("Id").charAt(1);
 					if(type == 'A'){
 						while(pack.getPackLength() != 0){
@@ -115,15 +119,14 @@ public class SuperTrunfo implements Game {
 						System.out.println(p2.getName() + " venceu a rodada! Pressione enter para continuar");
 						turn = 2;
 					}
-				} 
-				else if(Double.parseDouble(auxCardP1.getCard().get(auxAttribute)) > Double.parseDouble(auxCardP2.getCard().get(auxAttribute))){
+				}else if(valueCardP1 > valueCardP2){
 					// Jogador 1 ganha
 					while(pack.getPackLength() != 0){
 						p1.addCard(pack.getCard());
 					}
 					System.out.println(p1.getName() + " venceu a rodada! Pressione enter para continuar");
 					turn = 1;
-				}else if(Double.parseDouble(auxCardP1.getCard().get(auxAttribute)) < Double.parseDouble(auxCardP2.getCard().get(auxAttribute))){
+				}else if(valueCardP1 < valueCardP2){
 					while(pack.getPackLength() != 0){
 						p2.addCard(pack.getCard());
 					}
@@ -144,12 +147,12 @@ public class SuperTrunfo implements Game {
 				Interface.refreshInterface(p1, false, p2, true, pack);
 				if(mode.equals("2")){
 					System.out.println(p2.getName() + ", selecione um atributo: ");
-					auxAttribute = reader.next();
+					selected_attribute = reader.nextInt() +2;
 				}
 				else{
 					System.out.println(p2.getName() + " esta selecionando um atributo.");
-					auxAttribute = p2.getCards().botChoise(biggestNumbers, p2.getCards().showCard());
-					System.out.println(p2.getName() + " selecionou o atributo " + auxAttribute + ". Pressione enter para continuar");
+					//selected_attribute = p2.getPack().botChoise(biggestNumbers, p2.getPack().showCard());
+					System.out.println(p2.getName() + " selecionou o atributo " + selected_attribute + ". Pressione enter para continuar");
 					try {
 						System.in.read();
 					} catch (IOException e) {
@@ -157,11 +160,13 @@ public class SuperTrunfo implements Game {
 						e.printStackTrace();
 					}
 				}
-				Carta auxCardP1 = p1.getCards().showCard();
-				Carta auxCardP2 = p2.getCards().showCard();
+				Carta auxCardP1 = p1.getPack().showCard();
+				double valueCardP1 = Double.parseDouble((new ArrayList<String>(auxCardP1.getCard().values())).get(selected_attribute));
+				Carta auxCardP2 = p2.getPack().showCard();
+				double valueCardP2 = Double.parseDouble((new ArrayList<String>(auxCardP2.getCard().values())).get(selected_attribute));
 				Interface.refreshInterface(p1, true, p2, true, pack);
-				pack.addCard(p1.getCards().getCard());
-				pack.addCard(p2.getCards().getCard());
+				pack.addCard(p1.getPack().getCard());
+				pack.addCard(p2.getPack().getCard());
 				pack.shuffle();
 				if(auxCardP2.getCard().get("Trunfo").equals("1")){
 					char type = auxCardP1.getCard().get("Id").charAt(1);
@@ -201,14 +206,14 @@ public class SuperTrunfo implements Game {
 						turn = 1;
 					}
 				} 
-				else if(Double.parseDouble(auxCardP1.getCard().get(auxAttribute)) > Double.parseDouble(auxCardP2.getCard().get(auxAttribute))){
+				else if(valueCardP1 > valueCardP2){
 					// Jogador 1 ganha
 					while(pack.getPackLength() != 0){
 						p1.addCard(pack.getCard());
 					}
 					System.out.println(p1.getName() + " venceu a rodada! Pressione enter para continuar");
 					turn = 1;
-				}else if(Double.parseDouble(auxCardP1.getCard().get(auxAttribute)) < Double.parseDouble(auxCardP2.getCard().get(auxAttribute))){
+				}else if(valueCardP1 < valueCardP2){
 					// Jogador 2 ganha
 					while(pack.getPackLength() != 0){
 						p2.addCard(pack.getCard());
@@ -228,10 +233,10 @@ public class SuperTrunfo implements Game {
 			}
 		}
 		
-		if(p1.getCards().getPackLength() != 0)
+		if(p1.getPack().getPackLength() != 0)
 			System.out.println(p1.getName() + " venceu!");
 		
-		if(p2.getCards().getPackLength() != 0)
+		if(p2.getPack().getPackLength() != 0)
 			System.out.println(p2.getName() + " venceu!");
 	}
 

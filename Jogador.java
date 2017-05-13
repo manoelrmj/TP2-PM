@@ -18,7 +18,7 @@ public class Jogador {
 	/**
 	 * @return the cards
 	 */
-	public Pack getCards() {
+	public Pack getPack() {
 		return playerPack;
 	}
 

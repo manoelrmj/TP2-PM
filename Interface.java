@@ -36,17 +36,17 @@ public class Interface {
 					else if(i >1 && i <18){
 
 						if(j == 5)
-							printCard(j1.getCards().showCard(), b1, i-2);
+							printCard(j1.getPack().showCard(), b1, i-2);
 						else if(j == 52)
-							printCard(j2.getCards().showCard(), b2, i-2);
+							printCard(j2.getPack().showCard(), b2, i-2);
 						else
 							System.out.print("                       ");
 					}
 					else if(i>19 && i <25){
 						if(j == 5)
-							printPack(j1.getCards(), i-20); // Jogador 1
+							printPack(j1.getPack(), i-20); // Jogador 1
 						else if(j == 52)
-							printPack(j2.getCards(),i-20); // Jogador 2
+							printPack(j2.getPack(),i-20); // Jogador 2
 						else
 							System.out.print("                       ");
 					}

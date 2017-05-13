@@ -1,9 +1,9 @@
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class Carta {
 	
-	private Map<String, String> cardInfo = new HashMap<String, String>();
+	private Map<String, String> cardInfo = new LinkedHashMap<String, String>();
 	
 	public Carta() {
 		// TODO Auto-generated constructor stub
