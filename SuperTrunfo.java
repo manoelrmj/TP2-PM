@@ -67,7 +67,7 @@ public class SuperTrunfo implements Game {
 		int turn = 1;
 		String auxAttribute = "";
 		pack.shuffle();
-		while(p1.getCards().getPackLength() != 0 || p2.getCards().getPackLength() != 0){
+		while(p1.getCards().getPackLength() != 0 && p2.getCards().getPackLength() != 0){
 			if(turn == 1){
 				Interface.refreshInterface(p1, true, p2, false, pack);
 				System.out.println(p1.getName() + ", selecione um atributo: ");
