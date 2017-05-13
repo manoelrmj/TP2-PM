@@ -20,10 +20,21 @@ public class SuperTrunfo implements Game {
 		//pack.printCards();
 	}
 
+	private static void clearConsole(){
+		System.out.print("\033[H\033[2J");
+		System.out.flush();
+	}
+
 	@Override
 	public void startGame() {
 		Scanner reader = new Scanner(System.in);
-		System.out.println(":: :: SUPER TRUNFO :: ::");
+		clearConsole();
+		System.out.println(":: :: SUPER TRUNFO :: ::\n");
+		//System.out.println("1 - Single-player");
+		//System.out.println("2 - Multiplayer");
+		//System.out.println("Selecione o numero do modo: ");
+
+		//String mode = reader.next();
 		
 		System.out.println("Insira o nome do jogador 1: ");
 		p1 = new Jogador();
@@ -49,52 +60,71 @@ public class SuperTrunfo implements Game {
 				auxAttribute = reader.next();
 				Carta auxCardP1 = p1.getCards().showCard();
 				Carta auxCardP2 = p2.getCards().showCard();
-				if(Double.parseDouble(auxCardP1.getCard().get(auxAttribute)) > Double.parseDouble(auxCardP2.getCard().get(auxAttribute))){
+				Interface.refreshInterface(p1, true, p2, true, pack);
+				pack.addCard(p1.getCards().getCard());
+				pack.addCard(p2.getCards().getCard());
+				pack.shuffle();
+				if(auxCardP1.getCard().get("Trunfo").equals("1")){
+					char type = auxCardP2.getCard().get("Id").charAt(1);
+					if(type == 'A'){
+						while(pack.getPackLength() != 0){
+							p2.addCard(pack.getCard());
+						}
+						System.out.println(p1.getName() + " possui o SUPER TRUNFO! Porem " + p2.getName() + " possui uma carta do tipo A");
+						System.out.println(p2.getName() + " venceu a rodada! Pressione enter para continuar");
+						turn = 2;
+					}
+					else{
+						while(pack.getPackLength() != 0){
+							p1.addCard(pack.getCard());
+						}
+						System.out.println(p1.getName() + " possui o SUPER TRUNFO! " + p2.getName() + " nao possui uma carta do tipo A");
+						System.out.println(p1.getName() + " venceu a rodada! Pressione enter para continuar");
+						turn = 1;
+					}
+				}
+				else if(auxCardP2.getCard().get("Trunfo").equals("1")){
+					char type = auxCardP1.getCard().get("Id").charAt(1);
+					if(type == 'A'){
+						while(pack.getPackLength() != 0){
+							p1.addCard(pack.getCard());
+						}
+						System.out.println(p2.getName() + " possui o SUPER TRUNFO! Porem " + p1.getName() + " possui uma carta do tipo A");
+						System.out.println(p1.getName() + " venceu a rodada! Pressione enter para continuar");
+						turn = 1;
+					}
+					else{
+						while(pack.getPackLength() != 0){
+							p2.addCard(pack.getCard());
+						}
+						System.out.println(p2.getName() + " possui o SUPER TRUNFO! " + p1.getName() + " nao possui uma carta do tipo A");
+						System.out.println(p2.getName() + " venceu a rodada! Pressione enter para continuar");
+						turn = 2;
+					}
+				} 
+				else if(Double.parseDouble(auxCardP1.getCard().get(auxAttribute)) > Double.parseDouble(auxCardP2.getCard().get(auxAttribute))){
 					// Jogador 1 ganha
-					Interface.refreshInterface(p1, true, p2, true, pack);
-					pack.addCard(p1.getCards().getCard());
-					pack.addCard(p2.getCards().getCard());
-					pack.shuffle();
 					while(pack.getPackLength() != 0){
 						p1.addCard(pack.getCard());
 					}
 					System.out.println(p1.getName() + " venceu a rodada! Pressione enter para continuar");
-					try {
-						System.in.read();
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
 					turn = 1;
 				}else if(Double.parseDouble(auxCardP1.getCard().get(auxAttribute)) < Double.parseDouble(auxCardP2.getCard().get(auxAttribute))){
-					Interface.refreshInterface(p1, true, p2, true, pack);
-					pack.addCard(p1.getCards().getCard());
-					pack.addCard(p2.getCards().getCard());
-					pack.shuffle();
 					while(pack.getPackLength() != 0){
 						p2.addCard(pack.getCard());
 					}
 					System.out.println(p2.getName() + " venceu a rodada! Pressione enter para continuar");
-					try {
-						System.in.read();
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
 					// Jogador 2 ganha
 					turn = 2;
 				}else{ // empate
-					Interface.refreshInterface(p1, true, p2, true, pack);
-					pack.addCard(p1.getCards().getCard());
-					pack.addCard(p2.getCards().getCard());
 					System.out.println("Empate! Pressione enter para continuar");
-					try {
-						System.in.read();
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
 					turn = 2;
+				}
+				try {
+					System.in.read();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
 			}else if(turn == 2){
 				Interface.refreshInterface(p1, false, p2, true, pack);
@@ -102,55 +132,71 @@ public class SuperTrunfo implements Game {
 				auxAttribute = reader.next();
 				Carta auxCardP1 = p1.getCards().showCard();
 				Carta auxCardP2 = p2.getCards().showCard();
-				//Interface.refreshInterface(p1, true, p2, true, pack);
-				if(Double.parseDouble(auxCardP1.getCard().get(auxAttribute)) > Double.parseDouble(auxCardP2.getCard().get(auxAttribute))){
+				Interface.refreshInterface(p1, true, p2, true, pack);
+				pack.addCard(p1.getCards().getCard());
+				pack.addCard(p2.getCards().getCard());
+				pack.shuffle();
+				if(auxCardP2.getCard().get("Trunfo").equals("1")){
+					char type = auxCardP1.getCard().get("Id").charAt(1);
+					if(type == 'A'){
+						while(pack.getPackLength() != 0){
+							p1.addCard(pack.getCard());
+						}
+						System.out.println(p2.getName() + " possui o SUPER TRUNFO! Porem " + p1.getName() + " possui uma carta do tipo A");
+						System.out.println(p1.getName() + " venceu a rodada! Pressione enter para continuar");
+						turn = 1;
+					}
+					else{
+						while(pack.getPackLength() != 0){
+							p2.addCard(pack.getCard());
+						}
+						System.out.println(p2.getName() + " possui o SUPER TRUNFO! " + p1.getName() + " nao possui uma carta do tipo A");
+						System.out.println(p2.getName() + " venceu a rodada! Pressione enter para continuar");
+						turn = 2;
+					}
+				}
+				else if(auxCardP1.getCard().get("Trunfo").equals("1")){
+					char type = auxCardP2.getCard().get("Id").charAt(1);
+					if(type == 'A'){
+						while(pack.getPackLength() != 0){
+							p2.addCard(pack.getCard());
+						}
+						System.out.println(p1.getName() + " possui o SUPER TRUNFO! Porem " + p2.getName() + " possui uma carta do tipo A");
+						System.out.println(p2.getName() + " venceu a rodada! Pressione enter para continuar");
+						turn = 2;
+					}
+					else{
+						while(pack.getPackLength() != 0){
+							p1.addCard(pack.getCard());
+						}
+						System.out.println(p1.getName() + " possui o SUPER TRUNFO! " + p2.getName() + " nao possui uma carta do tipo A");
+						System.out.println(p1.getName() + " venceu a rodada! Pressione enter para continuar");
+						turn = 1;
+					}
+				} 
+				else if(Double.parseDouble(auxCardP1.getCard().get(auxAttribute)) > Double.parseDouble(auxCardP2.getCard().get(auxAttribute))){
 					// Jogador 1 ganha
-					Interface.refreshInterface(p1, true, p2, true, pack);
-					pack.addCard(p1.getCards().getCard());
-					pack.addCard(p2.getCards().getCard());
-					pack.shuffle();
 					while(pack.getPackLength() != 0){
 						p1.addCard(pack.getCard());
 					}
 					System.out.println(p1.getName() + " venceu a rodada! Pressione enter para continuar");
-					try {
-						System.in.read();
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					
 					turn = 1;
 				}else if(Double.parseDouble(auxCardP1.getCard().get(auxAttribute)) < Double.parseDouble(auxCardP2.getCard().get(auxAttribute))){
 					// Jogador 2 ganha
-					Interface.refreshInterface(p1, true, p2, true, pack);
-					pack.addCard(p1.getCards().getCard());
-					pack.addCard(p2.getCards().getCard());
-					pack.shuffle();
 					while(pack.getPackLength() != 0){
 						p2.addCard(pack.getCard());
 					}
 					System.out.println(p2.getName() + " venceu a rodada! Pressione enter para continuar");
-					try {
-						System.in.read();
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					
 					turn = 2;
 				}else{ // empate
-					Interface.refreshInterface(p1, true, p2, true, pack);
-					pack.addCard(p1.getCards().getCard());
-					pack.addCard(p2.getCards().getCard());
 					System.out.println("Empate! Pressione enter para continuar");
-					try {
-						System.in.read();
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
 					turn = 1;
+				}
+				try {
+					System.in.read();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
 			}
 		}
